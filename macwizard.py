@@ -13,7 +13,7 @@ DEFAULT_INTERFACE = 'wlan0'
 
 # Arguments handling
 parser = ArgumentParser()
-#parser.add_argument("-h", "--help", help="Show this help table")
+
 parser.add_argument("-p", "--prompt", action="store_true" ,help="Prompt the network interface selector")
 parser.add_argument("-i", "--interface",dest="interface", default=DEFAULT_INTERFACE, help="Specify network interface")
 parser.add_argument("-c", "--config", action="store_true", help="Show current configuration")
@@ -45,8 +45,13 @@ if args.prompt:
                   select = input("> ")
                   args.interface = cards_dict[int(select)]
                   break
+            
+            except KeyboardInterrupt:
+                  exit()
             except:
                   print("[red]Invalid input[/red]")
+
+            
             
 
 # Code
